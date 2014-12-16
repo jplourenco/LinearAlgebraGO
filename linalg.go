@@ -10,12 +10,10 @@ func eye(x int) Matrix{
 
 	for i := 0 ; i < x ;i++ {
 		mat[i] = make([]int,x)
-		for j := 0 ; j < x ;j++{
-			if i == j {
-				mat[i][j] = 1
-			}
-		}
+		mat[i][i] = 1
+		
 	}
+	
 	return mat
 }
 
@@ -73,6 +71,7 @@ func main() {
 	z := [][]int{a,b}
 	y := [][]int{c,c}
 	//fmt.Println(z)
+	fmt.Println(eye(4))
 	fmt.Println(mult(z,y))
 }
 
