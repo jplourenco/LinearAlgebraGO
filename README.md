@@ -1,4 +1,6 @@
 linalgo
 =======
 
-Matrix Algebra and Linear Algebra for Go Language
+Matrix and Linear Algebra for Go Language
+
+
