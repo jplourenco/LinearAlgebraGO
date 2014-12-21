@@ -1,10 +1,9 @@
-package main
 
-import "fmt"
+package linalgo
 
 type Matrix [][]int
 
-func eye(x int) Matrix{
+func Eye(x int) Matrix{
 	
 	mat := make([][]int,x)
 
@@ -15,7 +14,7 @@ func eye(x int) Matrix{
 	return mat
 }
 
-func dot(a,b []int ) int{
+func Dot(a,b []int ) int{
 
 	l := len(a)
 	res := 0
@@ -25,7 +24,7 @@ func dot(a,b []int ) int{
 	return res
 }
 
-func transpose(a Matrix) Matrix{
+func Transpose(a Matrix) Matrix{
 	
 	mat := make([][]int,len(a[0]))
 
@@ -38,26 +37,26 @@ func transpose(a Matrix) Matrix{
 	return mat
 }
 
-func mult(a,b Matrix) Matrix{
+func Mult(a,b Matrix) Matrix{
 
 	if len(a[0]) != len(b) {
 		return nil
 	}
 
-	tb := transpose(b)
+	tb := Transpose(b)
 
 	res := make([][]int,len(a))
 
 	for i := 0; i < len(a); i++ {
 		res[i] = make([]int,len(b[0]))
 		for j := 0; j < len(b[0]); j++{
-			res[i][j] = dot(a[i],tb[j])
+			res[i][j] = Dot(a[i],tb[j])
 		}
 	}
 	return res
 }
 
-func scalarMult(a Matrix, n int) Matrix{
+func ScalarMult(a Matrix, n int) Matrix{
 
 	mat := make([][]int,len(a))
 
@@ -72,7 +71,7 @@ func scalarMult(a Matrix, n int) Matrix{
 	return mat
 }
 
-func add(a,b Matrix) Matrix{
+func Add(a,b Matrix) Matrix{
 
 	if len(a) != len(b) || len(a[0]) != len(b[0]) {
 		return nil
@@ -90,7 +89,7 @@ func add(a,b Matrix) Matrix{
 	return mat
 }
 
-func sub(a,b Matrix) Matrix{
+func Sub(a,b Matrix) Matrix{
 
 	if len(a) != len(b) || len(a[0]) != len(b[0]) {
 		return nil
@@ -142,22 +141,4 @@ func eDiv(a,b Matrix) Matrix{
 	return mat
 }
 
-func main() {
-	
-	a := []int{1,2}
-	b := []int{4,5}
-	
-	c:= []int{4,5,3}	
-
-	z := [][]int{a,b}
-	y := [][]int{c,c}
-
-	//fmt.Println(z)
-	fmt.Println(scalarMult(eye(4),10))
-	fmt.Println(eDiv(z,y))
-	fmt.Println(eDiv(z,z))
-
-
-
-}
 
